@@ -3,11 +3,16 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors'); 
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = 8080;
-
+app.use(cors({
+  origin: '*', // 🔓 Allow requests from all origins (for dev only)
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 // Middleware
 app.use(bodyParser.json());
 
